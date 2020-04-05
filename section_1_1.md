@@ -1,7 +1,8 @@
 ## Section 1.1
 
-Applicative order evaluation (evaluate the arguments and then apply) vs
-Normal order evaluation (fully expand and then reduce)
+For complex procedures (function calls), there are 2 possible orders of evaluation :
+- Applicative order evaluation (evaluate the arguments first and then apply function) vs
+- Normal order evaluation (fully expand the function by substituting arguments and then evaluate)
 
 #### Ex1.5
 
@@ -13,14 +14,17 @@ define (p) (p))
         0
         y))
 
-  (test 0 (p))
+(test 0 (p))
 ```
+Normal order evaluation wouln't have called the procedure p, because the if condition wouln't have evaluated the else clause.
 The online [REPL](https://repl.it/@priteshshrivast/Ex15) crashed suggesting it was using applicative order evaluation, 
 which is what the interpreter always uses !
 
 #### Ex1.6
 
-The normal if form is special – it evaluates its then-clause part only if the predicate is true, and its else-clause part only if the predicate is false. The new-if function proposed here evaluates both parts, always because of applicative-order evaluation. Therefore, the else-clause (sqrt-iter (improve guess x)) will be evaluated unconditionally, which never terminates causing the program to crash !!
+The normal if form is special – it evaluates its then-clause part only if the predicate is true, and its else-clause part only if the predicate is false. The new-if function proposed here evaluates both parts, always, because of applicative-order evaluation, as they are the arguments of the procedure. 
+
+Therefore, the else-clause (sqrt-iter (improve guess x)) will be evaluated unconditionally, which never terminates causing the program to crash !!
 
 ```
 (define (sqrt-iter guess x)
