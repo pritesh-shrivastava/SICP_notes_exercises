@@ -158,10 +158,10 @@ Iterative process - faster than tree recursion
   (if (< count 3)
       a
       (f-iter (+ a (* 2 b) (* 2 c)) 
-							a 
-							b 
-							(- count 1)
-			)
+		a 
+		b 
+		(- count 1)
+		)
 	)
 )
 ```
