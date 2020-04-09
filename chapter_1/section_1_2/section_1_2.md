@@ -137,11 +137,11 @@ Tree recursion - easier to write, but slower to run
 (define (f_tree_rcrsn n)
   (cond ((< n 3) n)
         (else (+ (f_tree_rcrsn (- n 1))
-                 (* (f_tree_rcrsn (- n 2)) 2)
-								 (* (f_tree_rcrsn (- n 3)) 3)
-								 )
-				)
+                (* (f_tree_rcrsn (- n 2)) 2)
+		(* (f_tree_rcrsn (- n 3)) 3)
+		)
 	)
+ )
 )
 ```
 
