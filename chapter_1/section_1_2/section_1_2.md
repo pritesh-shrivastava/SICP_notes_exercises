@@ -167,3 +167,28 @@ Iterative process - faster than tree recursion
 	)
 )
 ```
+
+#### Ex1.12
+
+Exercise 1.12: The following pattern of numbers is called Pascal’s triangle.
+
+         1
+       1   1
+     1   2   1
+   1   3   3   1
+ 1   4   6   4   1
+       . . .
+The numbers at the edge of the triangle are all 1, and each number inside the triangle is the sum of the two numbers above it. Write a procedure that computes elements of Pascal’s triangle by means of a recursive process.
+
+_Solution_ : Calculating the elements of the Pascal's Triangle based on row & column (starting from 1, top to down, and left to right respectively). We are ignoring 0 values.
+
+```
+(define (pascal row col)
+	(if (or ( = col 1) (= col row))
+		1
+		(+ (pascal (- row 1) col)
+		   (pascal (- row 1)( - col 1))		
+		)
+	)
+)
+```
