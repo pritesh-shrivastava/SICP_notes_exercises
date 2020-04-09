@@ -192,3 +192,7 @@ _Solution_ : Calculating the elements of the Pascal's Triangle based on row & co
 	)
 )
 ```
+
+#### Ex1.13
+
+Prove that Fib(n) is the closest integer to φn/5⎯⎯√, where φ=(1+5⎯⎯√)/2. Hint: Let ψ=(1−5⎯⎯√)/2. Use induction and the definition of the Fibonacci numbers to prove that Fib(n)=(φn−ψn)/√5.
