@@ -46,7 +46,7 @@ In the second case, while the procedure is recursive, the actual process is line
 9
 ```
 
-#### Ex1.9
+#### Ex1.10
 
 Part 1 : The following procedure computes a mathematical function called Ackermann’s function.
 
@@ -126,4 +126,9 @@ For n > 0 and for integer n,
 (g n) computes 2^n
 (h n) computes 2^2^2^   (n times)
 
+#### Ex1.11
+
+A function f is defined by the rule that f(n)=n if n<3 and f(n)=f(n−1)+2f(n−2)+3f(n−3) if n≥3. Write a procedure that computes f by means of a recursive process. Write a procedure that computes f by means of an iterative process.
+
+_Solution_ :
 
