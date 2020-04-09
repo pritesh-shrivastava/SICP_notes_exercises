@@ -132,3 +132,36 @@ A function f is defined by the rule that f(n)=n if n<3 and f(n)=f(n−1)+2f(n−
 
 _Solution_ :
 
+Tree recursion - easier to write, but slower to run
+```
+(define (f_tree_rcrsn n)
+  (cond ((< n 3) n)
+        (else (+ (f_tree_rcrsn (- n 1))
+                 (* (f_tree_rcrsn (- n 2)) 2)
+								 (* (f_tree_rcrsn (- n 3)) 3)
+								 )
+				)
+	)
+)
+```
+
+Iterative process - faster than tree recursion
+```
+(define (f_iter n) 
+	(if (< n 3)
+	n
+	(f-iter 2 1 0 n)
+	)
+)
+
+(define (f-iter a b c count)
+  (if (< count 3)
+      a
+      (f-iter (+ a (* 2 b) (* 2 c)) 
+							a 
+							b 
+							(- count 1)
+			)
+	)
+)
+```
