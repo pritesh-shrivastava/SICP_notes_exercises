@@ -29,5 +29,7 @@ What are the orders of growth of the space and number of steps used by this proc
 ``` 
 _Solution_ : Recursive tree is plotted [here](https://codology.net/post/sicp-solution-exercise-1-14/)
 
-Order of growth for space is theta(n)
+Order of growth for space is proportional to the height of the tree => amount to be changed => theta(n) or O(n)
+
 Order of growth for no of steps is theta(n * (n-1st denom) * (n-2nd denom) * (n-3rd denom) * (n-4th denom)) or theta(n^5)
+Each denomination creates a separate subtree => O(n^k) where k= no of denominations
