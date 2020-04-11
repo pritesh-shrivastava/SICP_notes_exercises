@@ -27,3 +27,7 @@ What are the orders of growth of the space and number of steps used by this proc
         ((= kinds-of-coins 4) 25)
         ((= kinds-of-coins 5) 50)))
 ``` 
+_Solution_ : Recursive tree is plotted [here](https://codology.net/post/sicp-solution-exercise-1-14/)
+
+Order of growth for space is theta(n)
+Order of growth for no of steps is theta(n * (n-1st denom) * (n-2nd denom) * (n-3rd denom) * (n-4th denom)) or theta(n^5)
