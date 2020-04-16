@@ -1,4 +1,4 @@
-#lang sicp
+;#lang sicp
 (define (fast-expt b n)
   (cond ( (= n 0) 1) 
 	( (is_even n) (square (fast-expt b (/ n 2))))

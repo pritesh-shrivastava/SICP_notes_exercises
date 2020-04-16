@@ -1,4 +1,4 @@
-#lang sicp
+;#lang sicp
 
 (define (exp_rcrsn b n)
   (if (= n 0)
