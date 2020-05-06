@@ -6,12 +6,15 @@
 (define (halve x) (/ x 2))
 
 (define (fast_multiply a b)
+	
+	(display a) (display " & ")  ;; For debugging
+	(display b) (newline)
 	(cond 
 		(
 			(= b 0) 0
 		)
 		(
-			;(even? b) ( (fast_multiply (double a) (halve b) ) ).  ;; causing errors ???
+			;(even? b) (fast_multiply (double a) (halve b) )  ; converting this part to tailrec; Beware extra brackets cause errors !!
 			(even? b) ( double (fast_multiply a (halve b) ) )
 		)
 		(
