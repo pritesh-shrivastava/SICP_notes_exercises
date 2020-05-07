@@ -55,4 +55,11 @@ There is a clever algorithm for computing the Fibonacci numbers in a logarithmic
                        (- count 1)))))
 ```
 
-_Solution_ : 
+_Solution_ : Applying transforation `T_pq` twice to a and b and collecting terms of a and b, we get,
+
+```
+p' = p^2 + q^2
+q' = q^2 + 2*p*q
+```
+Complete script for calculating Fibonacci nos in logarithmic no of steps is at _fibonacci_fast.scm_ .
+
