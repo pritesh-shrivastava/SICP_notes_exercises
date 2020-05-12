@@ -1,4 +1,4 @@
-; Primality test using smalles-divisor procedure
+; Primality test using smallest-divisor procedure
 (define (smallest-divisor n)
   (find-divisor n 2))
 
@@ -58,10 +58,17 @@
 
 ; (search-for-primes 1000 1100)     	; Time elapsed for all these 100 nos was 0. Computers today are much faster than 30 years ago !
 ; (search-for-primes 10000 10100)   	; Time elapsed for all these 100 nos was 0.
-; (search-for-primes 100000 100100) 	; Time elapsed for all these 100 nos was 0.
+(search-for-primes 100000 100100) 	; Time elapsed for all these 100 nos was 0.
+; 100003 *** 0.
 ; (search-for-primes 1000000 1000100) 	; Time elapsed for all these 100 nos was 0.
 ; (search-for-primes 10000000 10000100) 		; Time elapsed for 10000079 *** 1.0000000000000009e-2
 ; (search-for-primes 100000000 100000100) 		; Time elapsed for 100000081 *** 2.0000000000000018e-2
-; (search-for-primes 1000000000 1000000100) 	; Time elapsed for 1000000007 *** .12
-; (search-for-primes 10000000000 10000000100) 	; Time elapsed for 10000000019 *** .37
-(search-for-primes 100000000000 100000000100) 	; Time elapsed for 100000000003 *** 1.17
+(search-for-primes 1000000000 1000000100)
+; 1000000007 *** .06
+; 1000000009 *** .04999999999999999
+(search-for-primes 10000000000 10000000100)
+; 10000000019 *** .16000000000000003
+; 10000000033 *** .15999999999999992
+(search-for-primes 100000000000 100000000100)
+; 100000000003 *** .5999999999999999
+; 100000000019 *** .54

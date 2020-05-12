@@ -32,3 +32,29 @@ _Solution_ : See script _prime_test.lsp_ .
 We find that the time taken increases by a factor of ~3 (sqrt(10) when we find the prime of no that is 10x the given no.
 However, since the speed of modern computers is much higher than when this book was written, we had to check for much larger nos to see comparable time difference in seconds.
 This result is also compatible with the notion that programs on any machine run in time proportional to the number of steps required for the computation !
+
+
+#### Ex1.23
+
+The smallest-divisor procedure shown at the start of this section does lots of needless testing: After it checks to see if the number is divisible by 2 there is no point in checking to see if it is divisible by any larger even numbers. This suggests that the values used for test-divisor should not be 2, 3, 4, 5, 6, …, but rather 2, 3, 5, 7, 9, …. To implement this change, define a procedure next that returns 3 if its input is equal to 2 and otherwise returns its input plus 2. Modify the smallest-divisor procedure to use (next test-divisor) instead of (+ test-divisor 1). With timed-prime-test incorporating this modified version of smallest-divisor, run the test for each of the 12 primes found in Exercise 1.22. Since this modification halves the number of test steps, you should expect it to run about twice as fast. Is this expectation confirmed? If not, what is the observed ratio of the speeds of the two algorithms, and how do you explain the fact that it is different from 2? 
+
+_Solution_ :  See script _prime_test_fast.lisp_ .
+The time taken for prime test does not half ! In fact, it reduced by ~60-70% !
+The observed ratio is not 2, but ~ 5/3 ! This could be attributed to the additional comparison step added in the _if_ clause of the _next_ function !
+
+#### Ex1.24
+
+Modify the timed-prime-test procedure of Exercise 1.22 to use fast-prime? (the Fermat method), and test each of the 12 primes you found in that exercise. Since the Fermat test has Θ ( log ⁡ n ) growth, how would you expect the time to test primes near 1,000,000 to compare with the time needed to test primes near 1000? Do your data bear this out? Can you explain any discrepancy you find? 
+
+_Solution_ : Check script _prime_test_fermal.lsp_
+From the collected timing data, we can observe that testing a number with twice as many digits (6 digits -> 1e-2 vs. 12 digits -> 2e-2) is roughly twice as slow. This supports the theory of logarithmic growth.
+
+
+#### Ex1.25
+
+Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod. After all, she says, since we already know how to compute exponentials, we could have simply written
+```
+(define (expmod base exp m)
+  (remainder (fast-expt base exp) m))
+```
+Is she correct? Would this procedure serve as well for our fast prime tester? Explain. 
