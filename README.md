@@ -12,3 +12,5 @@ Scheme Interpreter used :
   `scheme < file.scm` 
   
 * Racket
+
+Accompanying lectures by MIT : [Youtube Playlist](https://www.youtube.com/playlist?list=PLE18841CABEA24090) 
