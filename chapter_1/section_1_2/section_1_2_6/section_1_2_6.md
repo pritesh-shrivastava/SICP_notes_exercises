@@ -58,3 +58,25 @@ Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod
   (remainder (fast-expt base exp) m))
 ```
 Is she correct? Would this procedure serve as well for our fast prime tester? Explain. 
+
+_Solution_ : Yes, we can replace the original expmod procedure with the fast-expt procedure. However, this will make the overall procedure very slow. Check script _Ex_1_25.lisp_ , and the output below :
+
+```
+1 ]=> (expmod 5 101 101)square 5
+square 24
+square 71
+square 92
+square 1
+square 1
+;Value: 5
+
+1 ]=> (expmod_new 5 101 101)square 5
+square 125
+square 15625
+square 244140625
+square 298023223876953125
+square 88817841970012523233890533447265625
+;Value: 5
+```
+
+The remainder operation inside the original expmod implementation, keeps the numbers being squared less than the number tested for primality m. fast-expt however squares huge numbers of a^m size. Also check this [link](https://codology.net/post/sicp-solution-exercise-1-25/) .
