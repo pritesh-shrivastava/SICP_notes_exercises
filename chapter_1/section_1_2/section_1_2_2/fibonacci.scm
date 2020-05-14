@@ -4,6 +4,8 @@
         (else (+ (fib_tree_rcrsn (- n 1))
                  (fib_tree_rcrsn (- n 2))))))
 
+; Time complexity -> Tree recursion -> O(# nodes the bottom) -> O(# of times Fib(0) & Fib(1) will be calculated) -> Fib(n+1)
+
 
 
 (define (fib_iter n) 
@@ -13,3 +15,5 @@
   (if (= count 0)
       b
       (fib-iter (+ a b) a (- count 1))))
+
+; Tail recursion !!
