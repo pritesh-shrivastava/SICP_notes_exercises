@@ -19,7 +19,7 @@ _Solution_ :
 
 While both functions (procedures) are recursive by syntax, the actual processes are different in both functions.
 
-In the first case, the actual evaluation is delayed until `a` reaches the value 0. The intermediate step at every step is not yet evaluated. The process first expands, and then contracts as shown below. If the function were to crash in between, we cannot start from the break point. There are no state variables that can perfectly define the intermediate resutl. This is a linear recursive process.
+In the first case, the actual evaluation is delayed until `a` reaches the value 0. The intermediate step at every step is not yet evaluated. The process first expands, and then contracts as shown below. If the function were to crash in between, we cannot start from the break point. There are no state variables that can perfectly define the intermediate resutl. This is a *recursive* process.
 
 ```
 (+ 4 5)
@@ -33,6 +33,11 @@ In the first case, the actual evaluation is delayed until `a` reaches the value 
 (inc 8)
 9
 ```
+Time complexity = O(a)    (~ 2 * a steps)
+Space complexity = O(a)
+
+This recursive process is linear in both time and space complexity hence, it is called a linear recursive process.
+
 
 In the second case, while the procedure is recursive, the actual process is linearly iterative. Each intermediate state is perfectly defined with the procedure parameters. The process uses constant space at any point in time.
 ```
@@ -43,6 +48,9 @@ In the second case, while the procedure is recursive, the actual process is line
 (+ 0 9)
 9
 ```
+Time complexity = O(a)
+Space complexity = O(1)
+This is an *Iteration* .
 
 #### Ex1.10
 
