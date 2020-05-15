@@ -1,3 +1,7 @@
+#### Fermat's test for prime numbers
+
+Check Khan Academy's [video](https://www.khanacademy.org/computing/computer-science/cryptography/random-algorithms-probability/v/fermat-s-little-theorem-visualization) for a visualizing Fermat's little theorem.
+
 
 #### Ex1.21
 
@@ -59,24 +63,27 @@ Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod
 ```
 Is she correct? Would this procedure serve as well for our fast prime tester? Explain. 
 
-_Solution_ : Yes, we can replace the original expmod procedure with the fast-expt procedure. However, this will make the overall procedure very slow. Check script _Ex_1_25.lisp_ , and the output below :
+_Solution_ : Yes, we can replace the original expmod procedure with the fast-expt procedure. This procedure is okay for small nos. However, for large nos, this will make the overall procedure very slow. Check script _Ex_1_25.lisp_ .
 
+The remainder operation inside the original expmod implementation, keeps the numbers being squared less than the number tested for primality m. fast-expt however squares huge numbers of a^m size. Also check this [link](https://codology.net/post/sicp-solution-exercise-1-25/).
+
+#### Ex1.26
+
+Louis Reasoner is having great difficulty doing Exercise 1.24. His fast-prime? test seems to run more slowly than his prime? test. Louis calls his friend Eva Lu Ator over to help. When they examine Louis’s code, they find that he has rewritten the expmod procedure to use an explicit multiplication, rather than calling square:
 ```
-1 ]=> (expmod 5 101 101)square 5
-square 24
-square 71
-square 92
-square 1
-square 1
-;Value: 5
-
-1 ]=> (expmod_new 5 101 101)square 5
-square 125
-square 15625
-square 244140625
-square 298023223876953125
-square 88817841970012523233890533447265625
-;Value: 5
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (remainder 
+          (* (expmod base (/ exp 2) m)
+             (expmod base (/ exp 2) m))
+          m))
+        (else
+         (remainder 
+          (* base 
+             (expmod base (- exp 1) m))
+          m))))
 ```
+“I don’t see what difference that could make,” says Louis. “I do.” says Eva. “By writing the procedure like that, you have transformed the Θ ( log ⁡ n ) process into a Θ ( n ) process.” Explain.
 
-The remainder operation inside the original expmod implementation, keeps the numbers being squared less than the number tested for primality m. fast-expt however squares huge numbers of a^m size. Also check this [link](https://codology.net/post/sicp-solution-exercise-1-25/) .
+_Solution_ : 

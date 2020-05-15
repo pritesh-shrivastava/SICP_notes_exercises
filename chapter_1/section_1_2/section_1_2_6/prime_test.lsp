@@ -56,7 +56,7 @@
 	)	
 )
 
-; (search-for-primes 1000 1100)     	; Time elapsed for all these 100 nos was 0. Computers today are much faster than 30 years ago !
+(search-for-primes 100 1100)     	; Time elapsed for all these 100 nos was 0. Computers today are much faster than 30 years ago !
 ; (search-for-primes 10000 10100)   	; Time elapsed for all these 100 nos was 0.
 (search-for-primes 100000 100100) 	; Time elapsed for all these 100 nos was 0.
 ; 100003 *** 0.

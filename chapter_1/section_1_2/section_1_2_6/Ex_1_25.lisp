@@ -1,19 +1,22 @@
-; Primality test using Fermat test
+;; Primality test using Fermat test
 
-(define (square m)  
-   (display "square ")(display m)(newline) 
-   (* m m)) 
+;; For debugging
+(define (display-all . rest) (display rest))
 
-(define (expmod base exp m)
-  (cond ((= exp 0) 1)
-        ((even? exp)
+;; Expmod procedure
+(define (expmod base expt m)
+	(newline)
+	(display-all "expmod " base expt m)
+	(cond ((= expt 0) 1)
+        ((even? expt)
          (remainder 
-          (square (expmod base (/ exp 2) m))
+          (square (expmod base (/ expt 2) m))
           m))
         (else
          (remainder 
-          (* base (expmod base (- exp 1) m))
-          m))))
+          (* base (expmod base (- expt 1) m))
+          m)))
+)
 
 ;; Replace expmod with fast_expt function
 (define (is_even x) (= (remainder x 2) 0))
@@ -26,28 +29,35 @@
   )
 )
 
-(define (expmod_new base exp m)
-  (remainder (fast_expt base exp) m))
+(define (expmod_new base expt m)
+	(newline)
+	(display-all "expmod_new " base expt m)
+  	(remainder (fast_expt base expt) m))
 
+;; Fermat's test for Prime nos - trying with only 1 value of a
 (define (fermat-test n)
   (define (try-it a)
-    (= (expmod_new a n n) a))
-  (try-it (+ 1 (random (- n 1)))))
+    (= (expmod a n n) a)       ;; Original expmod function
+    ;(= (expmod_new a n n) a)  ;; Using fast expt and then remainder functon
+  )	
+  (try-it (+ 1 (random (- n 1))))
+)
 
+;; Repeating Fermat's test for a given no of "times"
 (define (fast-prime? n times)
   (cond ((= times 0) true)
         ((fermat-test n) 
          (fast-prime? n (- times 1)))
         (else false)))
 
-; Timed test
+;; Timed test -> Wil try 10 different values of 'a' in Fermat's test
 (define (timed-prime-test n)
-  (newline)
-  (display n)
+  ;(newline)
+  ;(display n)
   (start-prime-test n (runtime)))
 
 (define (start-prime-test n start-time)
-  (if (fast-prime? n 100)
+  (if (fast-prime? n 10)
       (report-prime (- (runtime) 
                        start-time)
       )
@@ -60,13 +70,17 @@
   (display elapsed-time))
 
 
-(expmod 5 101 101)
-(expmod_new 5 101 101)
-
-(timed-prime-test 101) ; 1.0e-2
-(timed-prime-test 139)  ; 0.
-; Original 100003 *** 0.
-(timed-prime-test 100003) ; 67.82 !!
-; Original 1000000007 *** .06
-(timed-prime-test 1000000007) ; Still running !!
-; Original 1000000009 *** .04999999999999999
+(timed-prime-test 101)
+(timed-prime-test 103)	;; *** .13
+(timed-prime-test 107)
+(timed-prime-test 109)
+(timed-prime-test 307) 	;; *** .1499999999999999
+(timed-prime-test 661)
+(timed-prime-test 139)
+(timed-prime-test 1009)
+(timed-prime-test 1019)	;; *** .21999999999999997
+(timed-prime-test 1021) ;; *** .21999999999999997
+; Original expmod -> 100003 *** .3200  expmod_new -> 7.44 s 
+(timed-prime-test 100003) ; 
+; Original expmod -> 1000000007 *** .69 ; expmod_new -> still running !!
+(timed-prime-test 1000000007)
