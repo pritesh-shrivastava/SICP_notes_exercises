@@ -38,7 +38,31 @@ _Solution_ :
 Part I - See script _product.lsp_
 Part II - See script _product_iteration.lsp_ 
 
+#### Ex1.32
 
+Part-I :
+Show that sum and product are both special cases of a still more general notion called accumulate that combines a collection of terms, using some general accumulation function:
+```
+(accumulate combiner null-value term a next b)
+```
+Accumulate takes as arguments the same term and range specifications as sum and product, together with a combiner procedure (of two arguments) that specifies how the current term is to be combined with the accumulation of the preceding terms and a null-value that specifies what base value to use when the terms run out. Write accumulate and show how sum and product can both be defined as simple calls to accumulate.
+
+Part-II :
+If your accumulate procedure generates a recursive process, write one that generates an iterative process. If it generates an iterative process, write one that generates a recursive process. 
+
+_Solution_ : See scripts _accumulator.scm_ & _accumulator_iter.scm_ for parts I & II respoctively.
+
+
+#### Ex1.33
+
+You can obtain an even more general version of accumulate (Exercise 1.32) by introducing the notion of a filter on the terms to be combined. That is, combine only those terms derived from values in the range that satisfy a specified condition. The resulting filtered-accumulate abstraction takes the same arguments as accumulate, together with an additional predicate of one argument that specifies the filter. Write filtered-accumulate as a procedure. 
+
+Show how to express the following using filtered-accumulate:
+
+* the sum of the squares of the prime numbers in the interval a to b (assuming that you have a prime? predicate already written)
+* the product of all the positive integers less than n that are relatively prime to n (i.e., all positive integers i < n such that GCD ( i , n ) = 1 )
+
+_Solution_ : 
 
 
 
