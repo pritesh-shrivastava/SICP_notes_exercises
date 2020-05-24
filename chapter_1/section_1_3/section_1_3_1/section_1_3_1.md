@@ -62,7 +62,7 @@ Show how to express the following using filtered-accumulate:
 * the sum of the squares of the prime numbers in the interval a to b (assuming that you have a prime? predicate already written)
 * the product of all the positive integers less than n that are relatively prime to n (i.e., all positive integers i < n such that GCD ( i , n ) = 1 )
 
-_Solution_ : 
+_Solution_ : Check script _filtered_accumulate.scm_ .
 
 
 
