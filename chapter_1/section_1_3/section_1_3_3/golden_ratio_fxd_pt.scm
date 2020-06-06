@@ -1,4 +1,5 @@
-#lang sicp
+;; To run in DrRacket, uncomment this line
+;#lang sicp
 
 (define tolerance 0.00001)
 
@@ -17,4 +18,10 @@
   (+ 1
      (/ 1 x)))
 
-(fixed-point trfm 1.0)  ;; Golder ratio ~ 1.6180
+;(fixed-point trfm 1.0)  ;; Golder ratio ~ 1.6180
+
+;; If we use average damping
+(define (average x y) (/ (+ x y) 2))
+
+(fixed-point (lambda (x) (average x (trfm x)))
+             1.0)
