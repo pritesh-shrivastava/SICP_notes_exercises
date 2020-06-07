@@ -8,6 +8,8 @@
     (< (abs (- v1 v2)) 
        tolerance))
   (define (try guess)
+    (newline)
+    (display guess)          ;; To check the series of approximations
     (let ((next (f guess)))
       (if (close-enough? guess next)
           next
