@@ -69,7 +69,20 @@ For the recursive process as well, the min no of iterations to get 4 decimal acc
 
 #### Ex1.38
 
-In 1737, the Swiss mathematician Leonhard Euler published a memoir De Fractionibus Continuis, which included a continued fraction expansion for e − 2 , where e is the base of the natural logarithms. In this fraction, the N i are all 1, and the D i are successively 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, …. Write a program that uses your cont-frac procedure from Exercise 1.37 to approximate e , based on Euler’s expansion. 
+In 1737, the Swiss mathematician Leonhard Euler published a memoir De Fractionibus Continuis, which included a continued fraction expansion for `e − 2` , where e is the base of the natural logarithms. In this fraction, the Ni are all 1, and the Di are successively 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, …. Write a program that uses your cont-frac procedure from Exercise 1.37 to approximate e, based on Euler’s expansion.
+
+_Solution_ : Check script _approx_euler_no.lsp_ .
+We get euler's no (2.71828) accurate upto 5 decimal places with a value of k = 10 !
+
+#### Ex1.39
+
+A continued fraction representation of the tangent function was published in 1770 by the German mathematician J.H. Lambert:
+`tan ⁡ x = x / 1 − x^2 /  3 − x^2 / 5 − … ,`
+where x is in radians. Define a procedure (tan-cf x k) that computes an approximation to the tangent function based on Lambert’s formula. k specifies the number of terms to compute, as in Exercise 1.37. 
+
+_Solution_ : Check script _tangent_approx.lisp_ .
+
+
 
 
 
