@@ -43,6 +43,21 @@ and `fixed-point` is defined as :
 
 #### Newton's method
 
+Newton's Method (also called the Newton-Raphson method) is a recursive algorithm for approximating the root of a differentiable function. 
+
+The Newton-Raphson method is a method for approximating the roots of polynomial equations of any order. In fact the method works for any equation, polynomial or not, as long as the function is differentiable in a desired interval. 
+
+In order to explain Newton's method, imagine that x 0 {\displaystyle x_{0}} x_{0} is already very close to a 0 of f ( x ) {\displaystyle f(x)} f(x) . We know that if we only look at points very close to x 0 {\displaystyle x_{0}} x_{0} then f ( x ) {\displaystyle f(x)} f(x) looks like its tangent line. If x 0 {\displaystyle x_{0}} x_{0} was already close to the place where f ( x ) {\displaystyle f(x)} f(x) was 0, and near x 0 {\displaystyle x_{0}} x_{0} we know that f ( x ) {\displaystyle f(x)} f(x) looks like its tangent line, then we hope the 0 of the tangent line at x 0 {\displaystyle x_{0}} x_{0} is a better approximation then x 0 {\displaystyle x_{0}} x_{0} itself.
+
+The equation for the tangent line to f ( x ) {\displaystyle f(x)} f(x) at x 0 {\displaystyle x_{0}} x_{0} is given by
+
+  `  y = f ′ ( x 0 ) ⋅ ( x − x 0 ) + f ( x 0 ) {\displaystyle y=f'(x_{0})\cdot (x-x_{0})+f(x_{0})} {\displaystyle y=f'(x_{0})\cdot (x-x_{0})+f(x_{0})} `
+
+Now we set y = 0 {\displaystyle y=0} y=0 and solve for x {\displaystyle x} x .
+
+  `  0 = f ′ ( x 0 ) ⋅ ( x − x 0 ) + f ( x 0 ) {\displaystyle 0=f'(x_{0})\cdot (x-x_{0})+f(x_{0})} `
+[Wiki](https://en.wikibooks.org/wiki/Calculus/Newton%27s_Method)
+
 Derivative of a function g(x) at x :
 ```
 (define (deriv g)
