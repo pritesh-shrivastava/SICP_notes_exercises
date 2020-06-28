@@ -20,4 +20,5 @@ In terms of your constructors and selectors, create procedures that compute the 
 
 Now implement a different representation for rectangles. Can you design your system with suitable abstraction barriers, so that the same perimeter and area procedures will work using either representation?
 
-_Solution_ : 
+_Solution_ : Check script _rectangle.scm_ .
+
