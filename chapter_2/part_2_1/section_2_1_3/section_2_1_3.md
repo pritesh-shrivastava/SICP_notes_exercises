@@ -33,4 +33,31 @@ This representation is known as `Church numerals`, after its inventor, Alonzo Ch
 
 Define one and two directly (not in terms of zero and add-1). (Hint: Use substitution to evaluate (add-1 zero)). Give a direct definition of the addition procedure + (not in terms of repeated application of add-1). 
 
-_Solution_ : 
+_Solution_ : Check script _church_numerals_scm .
+
+Using substitution to evaluate `(add-1 zero)`, ie, `one` :
+```
+(add-1 zero)
+=>  (lambda (f)
+      (lambda (x) 
+            (f ((zero f) x)
+            )
+      )
+    )
+
+=>  ( lambda (f)
+      (lambda (x)
+            (f ((lambda (x) x) x)
+            )
+      )
+    )
+
+=>  (lambda (f)
+      (lambda (x)
+            (f x)
+      )
+    )
+
+=> (define one (lambda (f) (lambda (x) (f x))))
+```
+
