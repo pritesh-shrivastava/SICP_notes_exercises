@@ -57,7 +57,48 @@ Using substitution to evaluate `(add-1 zero)`, ie, `one` :
             (f x)
       )
     )
-
-=> (define one (lambda (f) (lambda (x) (f x))))
 ```
+
+Hence we get, 
+```
+(define one (lambda (f) (lambda (x) (f x))))
+```
+
+Now, using substitution again to evauate `two`, ie, `(add-1 one)` :
+```
+(add-1 one)
+
+=>  (lambda (f) (lambda (x) (f ((one f) x))))
+```
+
+Let's look at `(one f)` :
+```
+=>  ( (lambda (f) (lambda (x) (f x))) 
+      f
+    )
+
+=> (lambda (x) (f x))
+```
+ Substituting this back into `(add-1 one)` :
+ ```
+ => (lambda (f) 
+      ( lambda (x)  (f  ( (lambda (x) (f x)) 
+                          x
+                        )
+                    )
+      )
+    )
+
+=>  (lambda (f)
+      (lambda (x) (f (f x)
+                  )
+      )
+    )
+ ```
+
+ Hence, we get, 
+`(define two (lambda (f) (lambda (x) (f (f x))))`
+
+
+For more details, refer [Community Scheme Wiki](http://community.schemewiki.org/?sicp-ex-2.6)
 
