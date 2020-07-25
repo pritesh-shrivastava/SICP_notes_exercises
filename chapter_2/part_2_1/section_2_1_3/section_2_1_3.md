@@ -31,9 +31,9 @@ In case representing pairs as procedures wasn’t mind-boggling enough, consider
 ```
 This representation is known as `Church numerals`, after its inventor, Alonzo Church, the logician who invented the `λ-calculus`.
 
-Define one and two directly (not in terms of zero and add-1). (Hint: Use substitution to evaluate (add-1 zero)). Give a direct definition of the addition procedure + (not in terms of repeated application of add-1). 
+Define one and two directly (not in terms of `zero` and `add-1`). (Hint: Use substitution to evaluate `(add-1 zero)`). Give a direct definition of the addition procedure `+` (not in terms of repeated application of `add-1`). 
 
-_Solution_ : Check script _church_numerals_scm .
+_Solution_ : Check script _church_numerals_scm_ .
 
 Using substitution to evaluate `(add-1 zero)`, ie, `one` :
 ```
@@ -99,6 +99,21 @@ Let's look at `(one f)` :
  Hence, we get, 
 `(define two (lambda (f) (lambda (x) (f (f x))))`
 
+Now, for addition of 2 Church numerals `a` & `b`, `(add-1)` is repeatedly applied to `b`, `a` no of times.
+So this definition also works, 
+```
+(define (+ a b) 
+   ( (a add-1) b)
+) 
+```
+
+Without using `add-1`, we will get, 
+```
+(define (+ a b) 
+   (lambda (f) 
+     (lambda (x) 
+       ((a f) ((b f) x))))) 
+```
 
 For more details, refer [Community Scheme Wiki](http://community.schemewiki.org/?sicp-ex-2.6)
 

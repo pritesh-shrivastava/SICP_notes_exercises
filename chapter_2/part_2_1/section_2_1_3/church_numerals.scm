@@ -13,12 +13,7 @@
     )
 )
 
-;; Testing
 ;; One & Two in terms of the procedures zero & add-1
-(add-1 zero)          ;; returns ;Value: #[compound-procedure 1]
-(add-1 (add-1 zero))  ;; returns ;Value: #[compound-procedure 2]
-
-
 (define one 
     (lambda (f) 
         (lambda (x) 
@@ -30,7 +25,21 @@
 (define two 
     (lambda (f) 
         (lambda (x) 
-            (f (f x)
+            (f (f x))
         )
     )
 )
+
+
+;; Church numerals are basically the no of times you are composing a function f on x
+((one square) 3)
+((two square) 3)
+
+(define (+ a b) 
+   ( (a add-1) b)
+) 
+
+;; Testing
+(+ zero one)
+((two square) 2)            ;; sq (sq 2)
+(((+ two one) square) 2)    ;; sq (sq (sq 2))
