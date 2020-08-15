@@ -74,12 +74,12 @@
 )
 
 ;; Testing 
- (define i (make-interval 2 7)) 
- (define j (make-interval 8 3)) 
+(define i (make-interval 2 7)) 
+(define j (make-interval 8 3)) 
   
- (display-interval i) 
- (display-interval (sub-interval i j)) 
- (display-interval (sub-interval j i))
+(display-interval i) 
+(display-interval (sub-interval i j)) 
+(display-interval (sub-interval j i))
 
 ;; Width of a interval
 (define (width i)
@@ -89,3 +89,22 @@
         2
     )
 )
+
+;; Division of interval with 0 span handling
+(define (div-interval2 x y)
+    (if   
+        (or (<  (*  (lower-bound x) (upper-bound x))
+                0
+            )
+            (<  (*  (lower-bound y) (upper-bound y))
+                0
+            )
+        )
+        (error "One or more intervals crossing zero." )
+        (div-interval x y)
+    )
+)
+;; testing 0 span interval
+(define r1 (make-interval 100.0 101.0))
+(define r2 (make-interval -0.2 0.3))
+(define r3 (div-interval2 r1 r2))
