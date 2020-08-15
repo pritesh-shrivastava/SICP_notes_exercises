@@ -1,19 +1,22 @@
 ;; Interval abstraction
 ;;; Interval constructor
-(define (make-interval a b) (cons a b))
-
+(define (make-interval a b) 
+    (cons a b)
+)
 ;;; Interval selectors
-
 ;; If upper and lower bounds are provided to the constructor in order :
 ; (define (lower-bound i) (car i))
 ; (define (upper-bound i) (cdr i))
 ;; However, we are not validatiing user input in the construcor, hence,
 ;; this is safer
-(define (upper-bound i) (max (car i) (cdr i))) 
-(define (lower-bound i) (min (car i) (cdr i))) 
+(define (upper-bound i) 
+    (max (car i) (cdr i))
+) 
+(define (lower-bound i) 
+    (min (car i) (cdr i))
+) 
 
 ;; Operations on intervals
-
 ;;; Addition
 (define (add-interval x y)
     (make-interval  (+  (lower-bound x) 
@@ -22,7 +25,14 @@
                         (upper-bound y))
     )
 )
-
+;;; Substraction of intervals
+(define (sub-interval x y)
+    (make-interval  (-  (lower-bound x) 
+                        (upper-bound y))
+                    (-  (upper-bound x) 
+                        (lower-bound y))
+    )
+)
 ;;; Multiplication of intervals
 (define (mul-interval x y)
     (let 
@@ -41,7 +51,6 @@
         )
     )
 )
-
 ;;; Division of intervals
 (define (div-interval x y)
     (mul-interval   x 
@@ -52,16 +61,8 @@
     )
 )
 
-;;; Substraction of intervals
-(define (sub-interval x y)
-    (make-interval  (-  (lower-bound x) 
-                        (upper-bound y))
-                    (-  (upper-bound x) 
-                        (lower-bound y))
-    )
-)
 
-;;; For testing
+;; For testing
 ;;; Print interval
 (define (display-interval i) 
    (newline) 
@@ -78,4 +79,13 @@
   
  (display-interval i) 
  (display-interval (sub-interval i j)) 
- (display-interval (sub-interval j i)) 
+ (display-interval (sub-interval j i))
+
+;; Width of a interval
+(define (width i)
+    (/  (-  (upper-bound i) 
+            (lower-bound i)
+        )
+        2
+    )
+)
