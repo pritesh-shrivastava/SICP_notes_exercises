@@ -110,7 +110,7 @@
 (define r3 (div-interval2 r1 r2))
 
 
-define (mul-interval2 x y) 
+(define (mul-interval2 x y) 
    (define (positive? x) (>= x 0)) 
    (define (negative? x) (< x 0)) 
    (let ((xl (lower-bound x)) 

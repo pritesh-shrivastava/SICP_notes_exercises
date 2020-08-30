@@ -1,6 +1,6 @@
 ## README
 
-This repository contains my notes and exercise solutions for the wonderful book, Structure & Interpretations Of Computer Programs.
+This repository contains my notes and exercise solutions for the wonderful book, Structure & Interpretation Of Computer Programs.
 
 #### Book & Lecture links
 - Official e-book distributed freely by the MIT Press : [HTML](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html)

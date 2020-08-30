@@ -90,8 +90,29 @@ _Solution_ : Check Community Scheme [Wiki](http://community.schemewiki.org/?sicp
 A test case for this is added to the script _center_tolerance.scm_ .
 
 
-#### Ex2.14
+#### Ex2.14, Ex2.15 & 2.16
+
+Following 2 programs are written by Lem for computing eq resistance for 2 resistors in parallel :
+```
+(define (par1 r1 r2)
+  (div-interval 
+   (mul-interval r1 r2)
+   (add-interval r1 r2)))
+
+(define (par2 r1 r2)
+  (let ((one (make-interval 1 1)))
+    (div-interval 
+     one
+     (add-interval 
+      (div-interval one r1) 
+      (div-interval one r2)))))
+```
+
 
 Demonstrate that Lem is right. Investigate the behavior of the system on a variety of arithmetic expressions. Make some intervals A and B , and use them in computing the expressions A / A and A / B . You will get the most insight by using intervals whose width is a small percentage of the center value. Examine the results of the computation in center-percent form.
 
-_Solution_ : 
+Eva Lu Ator, another user, has also noticed the different intervals computed by different but algebraically equivalent expressions. She says that a formula to compute with intervals using Alyssa’s system will produce tighter error bounds if it can be written in such a form that no variable that represents an uncertain number is repeated. Thus, she says, par2 is a “better” program for parallel resistances than par1. Is she right? Why? 
+
+Explain, in general, why equivalent algebraic expressions may lead to different answers. Can you devise an interval-arithmetic package that does not have this shortcoming, or is this task impossible? (Warning: This problem is very difficult.)
+
+_Solution_ : Look at the explanation from [Community Scheme Wiki](http://community.schemewiki.org/?sicp-ex-2.14-2.15-2.16) for each of these 3 questions.
