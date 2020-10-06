@@ -53,7 +53,7 @@ Simpler for y :
 ```
 This is wrong:
 ~(cdr (cdr (cdr (cdr (cdr (cdr z))))))~
-as they are not cons simple pairs, but lists. There is nil as well!!
+as they are not simple pairs, but lists. There is nil as well!
 So we need to add some `car`s too!
 ```
 z ->(cons   
@@ -132,4 +132,21 @@ x
 ((4 3) (2 1))
 ```
 
-_Solution_ : 
+_Solution_ : Check script _deep_reverse.scm_ .
+
+#### Ex2.28
+
+Write a procedure fringe that takes as argument a tree (represented as a list) and returns a list whose elements are all the leaves of the tree arranged in left-to-right order. For example,
+```
+(define x 
+  (list (list 1 2) (list 3 4)))
+
+(fringe x)
+(1 2 3 4)
+
+(fringe (list x x))
+(1 2 3 4 1 2 3 4)
+```
+
+_Solution_ : Check script _fringe.lsp_ .
+
