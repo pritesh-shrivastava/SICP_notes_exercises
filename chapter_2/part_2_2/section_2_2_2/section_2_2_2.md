@@ -20,6 +20,28 @@ vs Length - which only counts no of elements at the top level, & ignores nesting
 )
 ```
 
+Scale the elements of a nested list / tree by a constant factor :
+```
+(define (scale-tree tree factor)
+    (cond ((null? tree) nil)
+          ((not (pair? tree)) (* tree factor))
+          (else
+            (cons   (scale-tree (car tree) factor)
+                    (scale-tree (cdr tree) factor))
+          )
+    )
+)
+```
+Alternative way
+```
+(define (scale-tree tree factor)
+  (map (lambda (sub-tree)
+         (if (pair? sub-tree)
+             (scale-tree sub-tree factor)
+             (* sub-tree factor)))
+       tree)
+)
+```
 #### Ex2.24
 
 Suppose we evaluate the expression `(list 1 (list 2 (list 3 4)))`. Give the result printed by the interpreter, the corresponding box-and-pointer structure, and the interpretation of this as a tree.
@@ -177,4 +199,21 @@ Design a predicate that tests whether a binary mobile is balanced.
 ```
 How much do you need to change your programs to convert to the new representation?
 
-_Solution_ : Check script _binary_mobile.ss_ .
+_Solution_ : Check script _binary_mobile.ss_ & _binary_mobile_alternate.ss_ .
+
+
+#### Ex2.30
+
+Define a procedure `square-tree` analogous to the `square-list` procedure of Ex2.21. 
+That is, `square-tree` should behave as follows:
+```
+(square-tree
+ (list 1
+       (list 2 (list 3 4) 5)
+       (list 6 7)))
+```
+(1 (4 (9 16) 25) (36 49))
+
+Define `square-tree` both directly (i.e., without using any higher-order procedures) and also by using `map` and recursion. 
+
+_Solution_ : Check script `square_tree_list.ss`. 
