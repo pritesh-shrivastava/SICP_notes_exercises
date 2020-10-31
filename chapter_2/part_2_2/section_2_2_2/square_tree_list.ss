@@ -50,3 +50,26 @@
        (list 2 (list 3 4) 5)
        (list 6 7))
 )
+
+;; Abstraction of tree procedure as tree-map
+(define (tree-map f tree)
+  (map  (lambda (x) 
+                (if (pair? x)
+                    (tree-map f x)
+                    (f x)
+                )
+        ) 
+        tree
+  )
+)
+
+;; Re-implementing square-tree as the application of higher order function tree-map
+(define (square-tree-abst tree) 
+  (tree-map square tree)
+)
+
+(square-tree-abst
+ (list 1
+       (list 2 (list 3 4) 5)
+       (list 6 7))
+)

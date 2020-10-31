@@ -216,4 +216,33 @@ That is, `square-tree` should behave as follows:
 
 Define `square-tree` both directly (i.e., without using any higher-order procedures) and also by using `map` and recursion. 
 
+_Solution_ : Check script `square_tree_list.ss`.
+
+
+#### Ex2.31
+
+Abstract your answer to Ex2.30 to produce a procedure `tree-map` with the property that `square-tree` could be defined as :
+```
+(define (square-tree tree) 
+  (tree-map square tree))
+```
+
 _Solution_ : Check script `square_tree_list.ss`. 
+
+
+#### Ex2.32
+
+We can represent a set as a list of distinct elements, and we can represent the set of all subsets of the set as a list of lists. For example, if the set is (1 2 3), then the set of all subsets is (() (3) (2) (2 3) (1) (1 3) (1 2) (1 2 3)). Complete the following definition of a procedure that generates the set of subsets of a set and give a clear explanation of why it works:
+```
+(define (subsets s)
+  (if (null? s)
+      (list nil)
+      (let 
+        ( (rest (subsets (cdr s))) )
+        (append rest (map ⟨??⟩ rest))
+      )
+  )
+)
+```
+
+_Solution_ : Check script `sets_subsets.ss`.
