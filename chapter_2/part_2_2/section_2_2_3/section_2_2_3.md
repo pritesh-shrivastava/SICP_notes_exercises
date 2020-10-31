@@ -20,8 +20,10 @@ Accumulate procedure :
       (op (car sequence)
           (accumulate op 
                       initial 
-                      (cdr sequence)))))
-
+                      (cdr sequence))
+      )
+  )
+)
 ```
 Procedure to enumerate a tree, ie, take a nested list & return a list of all elements in left->right order
 ```
@@ -119,3 +121,29 @@ Fill in the missing expressions to complete the following definitions of some ba
 (define (length sequence)
   (accumulate ⟨??⟩ 0 sequence))
 ```
+
+_Solution_ : See script `hof_accumulate.scm`.
+
+
+#### Ex2.34
+
+Evaluating a polynomial in x at a given value of x can be formulated as an accumulation. We evaluate the polynomial
+`a_n x^n + a_n − 1 x^n − 1 + ⋯ + a 1 x + a 0`
+using a well-known algorithm called Horner’s rule, which structures the computation as
+( … ( a n x + a n − 1 ) x + ⋯ + a 1 ) x + a 0 .
+In other words, we start with a n , multiply by x , add a n − 1 , multiply by x , and so on, until we reach a 0 .82
+
+Fill in the following template to produce a procedure that evaluates a polynomial using Horner’s rule. Assume that the coefficients of the polynomial are arranged in a sequence, from a 0 through a n .
+```
+(define 
+  (horner-eval x coefficient-sequence)
+  (accumulate 
+   (lambda (this-coeff higher-terms)
+     ⟨??⟩)
+   0
+   coefficient-sequence))
+```
+For example, to compute `1 + 3 x + 5 x 3 + x 5 at x = 2` you would evaluate
+`(horner-eval 2 (list 1 3 0 5 0 1))`
+
+_Solution_ :
