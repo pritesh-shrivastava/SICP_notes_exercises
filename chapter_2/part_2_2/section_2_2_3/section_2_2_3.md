@@ -162,3 +162,10 @@ _Solution_ : Check script `count_leaves.scm`.
 
 #### Ex2.36
 
+Design the procedure `accumulate-n` which is similar to accumulate except that it takes as its third argument a sequence of sequences, which are all assumed to have the same number of elements. It applies the designated accumulation procedure to combine all the first elements of the sequences, all the second elements of the sequences, and so on, and returns a sequence of the results. For instance, if s is a sequence containing four sequences, ((1 2 3) (4 5 6) (7 8 9) (10 11 12)), then the value of (accumulate-n + 0 s) should be the sequence (22 26 30). 
+
+_Solution_ : Check script `accumulate-n.scm`.
+
+
+#### Ex2.37
+
