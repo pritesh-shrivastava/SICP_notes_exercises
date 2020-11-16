@@ -146,4 +146,19 @@ Fill in the following template to produce a procedure that evaluates a polynomia
 For example, to compute `1 + 3 x + 5 x 3 + x 5 at x = 2` you would evaluate
 `(horner-eval 2 (list 1 3 0 5 0 1))`
 
-_Solution_ :
+_Solution_ : Check _horners_rule.scm_ .
+
+
+#### Ex2.35
+
+Redefine count-leaves from 2.2.2 as an accumulation:
+```
+(define (count-leaves t)
+  (accumulate ⟨??⟩ ⟨??⟩ (map ⟨??⟩ ⟨??⟩)))
+```
+
+_Solution_ : Check script `count_leaves.scm`.
+
+
+#### Ex2.36
+
