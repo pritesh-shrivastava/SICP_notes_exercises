@@ -15,7 +15,8 @@ I've used the following 3 tools for solving the problems :
 
 * MIT-Scheme
   * Outside of REPL, to execute a Scheme script at the terminal using MIT-Scheme, run
-  `scheme < file.scm` 
+  `scheme < file.scm`
+  * Jupyter kernel for MIT scheme is also available [here](https://github.com/joeltg/mit-scheme-kernel) 
   
 * Racket language, and the IDE DrRacket
 
