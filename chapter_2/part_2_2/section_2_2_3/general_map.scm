@@ -1,5 +1,3 @@
-#lang racket
-
 ;; Defining helper functions
  (define (accumulate op initial sequence) 
    (if (null? sequence) 
@@ -9,9 +7,9 @@
 
 (define (accumulate-n op init seqs)
   (if (null? (car seqs))
-      nil
-      (cons (accumulate op init (map (car seqs)))
-            (accumulate-n op init (map (cdr seqs)))
+      '()
+      (cons (accumulate op init (map car seqs))
+            (accumulate-n op init (map cdr seqs))
       )
   )
 )
@@ -22,16 +20,18 @@
 )
 
 (define (matrix-*-vector m v)
-  (map (lambda (m-row)(dot-product m-row v) m) )
+  (map (lambda (m-row)(dot-product m-row v) ) 
+       m)
 )
 
 (define (transpose mat)
-  (accumulate-n cons nil mat)
+  (accumulate-n cons '() mat)
 )
 
 (define (matrix-*-matrix m n)
   (let ((n-cols (transpose n)))
-    (map (lambda (m-row)(matrix-*-vector n-cols m-row)) m)
+    (map (lambda (m-row)(matrix-*-vector n-cols m-row)) 
+         m)
   )
 )
 
